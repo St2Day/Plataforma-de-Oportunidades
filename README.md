@@ -1,9 +1,9 @@
 # Plataforma-de-Cadastro-de-Oportunidades-para-Jovens-em-Situa-o-de-Vulnerabilidade
 
-A Plataforma de Cadastro de Oportunidades para Jovens promove inovação social ao conectar jovens vulneráveis a oportunidades (empregos, estágios, cursos e mentorias).
+A Plataforma de Cadastro de Oportunidades para Jovens promove inovação social ao conectar jovens vulneráveis a oportunidades (empregos, estágios, cursos).
 
 # Sobre o Projeto
-Projeto extensionista da UNIG para o Tema Integrador IV - Projeto de Sistemas.
+Projeto extensionista da UNIG para o Tema Integrador IV 
 
 # Tecnologias
 - HTML5
