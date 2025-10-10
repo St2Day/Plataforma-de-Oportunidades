@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema de Oportunidades</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Sistema de Oportunidades</h1>
+            <a href="index.html" class="btn">Voltar</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" required>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">Entrar</button>
+            </form>
+            
+            <p style="text-align: center; margin-top: 20px;">
+                Não tem conta? <a href="cadastro.html">Cadastre-se</a>
+            </p>
+        </div>
+    </main>
+
+    <script>
+        // Faz o login funcionar
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            
+            // Teste simples - depois conecta com a API
+            if (email && senha) {
+                alert('Login realizado! Indo para sua área...');
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Preencha todos os campos!');
+            }
+        });
+    </script>
+</body>
+</html>

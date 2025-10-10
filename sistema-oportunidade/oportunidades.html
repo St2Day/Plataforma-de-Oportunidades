@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oportunidades - Sistema de Oportunidades</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Sistema de Oportunidades</h1>
+            <div class="buttons">
+                <a href="dashboard.html" class="btn">Minha Área</a>
+                <a href="index.html" class="btn" onclick="fazerLogout()">Sair</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Oportunidades Disponíveis</h2>
+            
+            <!-- Filtros -->
+            <div style="margin-bottom: 20px; padding: 15px; background: #f9f9f9; border-radius: 5px;">
+                <h3>Filtrar por:</h3>
+                <select id="filtroTipo" style="padding: 8px; margin-right: 10px;">
+                    <option value="">Todos os tipos</option>
+                    <option value="curso">Curso</option>
+                    <option value="estagio">Estágio</option>
+                    <option value="emprego">Emprego</option>
+                    <option value="mentoria">Mentoria</option>
+                </select>
+                
+                <input type="text" id="filtroLocal" placeholder="Localização" style="padding: 8px;">
+                
+                <button onclick="filtrarOportunidades()" class="btn" style="margin-left: 10px;">Filtrar</button>
+                <button onclick="limparFiltros()" class="btn" style="margin-left: 5px;">Limpar</button>
+            </div>
+
+            <!-- Lista de Oportunidades -->
+            <div id="listaOportunidades">
+                <div class="oportunidade-item">
+                    <h3>Estágio em Desenvolvimento Web</h3>
+                    <p><strong>Empresa:</strong> Tech Solutions</p>
+                    <p><strong>Tipo:</strong> Estágio</p>
+                    <p><strong>Local:</strong> São Paulo - SP</p>
+                    <p><strong>Descrição:</strong> Estágio para estudantes de TI com interesse em desenvolvimento web.</p>
+                    <button class="btn" onclick="candidatar(1)">Candidatar-se</button>
+                </div>
+
+                <div class="oportunidade-item">
+                    <h3>Curso de Programação Básica</h3>
+                    <p><strong>Empresa:</strong> Digital School</p>
+                    <p><strong>Tipo:</strong> Curso</p>
+                    <p><strong>Local:</strong> Online</p>
+                    <p><strong>Descrição:</strong> Curso gratuito de introdução à programação.</p>
+                    <button class="btn" onclick="candidatar(2)">Candidatar-se</button>
+                </div>
+
+                <div class="oportunidade-item">
+                    <h3>Mentoria em Carreira Tech</h3>
+                    <p><strong>Empresa:</strong> Career Growth</p>
+                    <p><strong>Tipo:</strong> Mentoria</p>
+                    <p><strong>Local:</strong> Online</p>
+                    <p><strong>Descrição:</strong> Mentoria individual para desenvolvimento de carreira na área de tecnologia.</p>
+                    <button class="btn" onclick="candidatar(3)">Candidatar-se</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Quando a página carrega
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarOportunidades();
+        });
+
+        function carregarOportunidades() {
+            // Aqui você vai buscar da API
+            console.log('Carregando oportunidades...');
+        }
+
+        function filtrarOportunidades() {
+            const tipo = document.getElementById('filtroTipo').value;
+            const local = document.getElementById('filtroLocal').value;
+            
+            let mensagem = 'Filtrando por: ';
+            if (tipo) mensagem += `Tipo: ${tipo} `;
+            if (local) mensagem += `Local: ${local}`;
+            
+            alert(mensagem);
+            
+            // Aqui você vai filtrar as oportunidades da API
+        }
+
+        function limparFiltros() {
+            document.getElementById('filtroTipo').value = '';
+            document.getElementById('filtroLocal').value = '';
+            alert('Filtros limpos!');
+            // Recarrega todas as oportunidades
+            carregarOportunidades();
+        }
+
+        function candidatar(idOportunidade) {
+            // Verifica se o usuário está logado
+            const usuario = localStorage.getItem('usuario');
+            
+            if (!usuario) {
+                alert('Você precisa fazer login para se candidatar!');
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            const usuarioObj = JSON.parse(usuario);
+            
+            if (usuarioObj.tipo !== 'jovem') {
+                alert('Apenas jovens podem se candidatar a oportunidades!');
+                return;
+            }
+            
+            if(confirm('Deseja se candidatar a esta oportunidade?')) {
+                // Aqui vai enviar para a API
+                alert('Candidatura enviada com sucesso!');
+                
+                // Atualiza o botão para mostrar que já se candidatou
+                const botao = event.target;
+                botao.textContent = 'Candidatado ✓';
+                botao.disabled = true;
+                botao.style.background = '#6c757d';
+            }
+        }
+
+        function fazerLogout() {
+            if (confirm('Deseja realmente sair?')) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('usuario');
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+</html>
