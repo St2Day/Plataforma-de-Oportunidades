@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Sistema de Oportunidades</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Sistema de Oportunidades</h1>
+            <a href="index.html" class="btn">Voltar</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Cadastro</h2>
+            <form id="cadastroForm">
+                <div class="form-group">
+                    <label for="tipo">Tipo de Usuário:</label>
+                    <select id="tipo" required>
+                        <option value="">Selecione...</option>
+                        <option value="jovem">Jovem</option>
+                        <option value="empresa">Empresa</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" required>
+                </div>
+                
+                <!-- Campos específicos para Jovem -->
+                <div id="camposJovem" style="display: none;">
+                    <div class="form-group">
+                        <label for="escolaridade">Escolaridade:</label>
+                        <input type="text" id="escolaridade">
+                    </div>
+                    <div class="form-group">
+                        <label for="interesse">Área de Interesse:</label>
+                        <input type="text" id="interesse">
+                    </div>
+                </div>
+                
+                <!-- Campos específicos para Empresa -->
+                <div id="camposEmpresa" style="display: none;">
+                    <div class="form-group">
+                        <label for="cnpj">CNPJ:</label>
+                        <input type="text" id="cnpj">
+                    </div>
+                    <div class="form-group">
+                        <label for="nomeEmpresa">Nome da Empresa:</label>
+                        <input type="text" id="nomeEmpresa">
+                    </div>
+                    <div class="form-group">
+                        <label for="setor">Setor:</label>
+                        <input type="text" id="setor">
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">Cadastrar</button>
+            </form>
+            
+            <p style="text-align: center; margin-top: 20px;">
+                Já tem conta? <a href="login.html">Faça login</a>
+            </p>
+        </div>
+    </main>
+
+    <script>
+        // Mostra campos específicos baseado no tipo de usuário
+        document.getElementById('tipo').addEventListener('change', function() {
+            const tipo = this.value;
+            document.getElementById('camposJovem').style.display = 
+                tipo === 'jovem' ? 'block' : 'none';
+            document.getElementById('camposEmpresa').style.display = 
+                tipo === 'empresa' ? 'block' : 'none';
+        });
+
+        // Faz o cadastro funcionar
+        document.getElementById('cadastroForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const tipo = document.getElementById('tipo').value;
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            
+            if (tipo && nome && email && senha) {
+                alert('Cadastro realizado! Faça login para continuar.');
+                window.location.href = 'login.html';
+            } else {
+                alert('Preencha todos os campos obrigatórios!');
+            }
+        });
+    </script>
+</body>
+</html>

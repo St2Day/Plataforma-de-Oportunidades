@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Área - Sistema de Oportunidades</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Sistema de Oportunidades</h1>
+            <div class="buttons">
+                <a href="oportunidades.html" class="btn">Ver Oportunidades</a>
+                <a href="index.html" class="btn" onclick="fazerLogout()">Sair</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Minha Área</h2>
+            
+            <!-- Perfil do Usuário -->
+            <div style="background: #e8f4ff; padding: 20px; border-radius: 5px; margin-bottom: 20px;">
+                <h3>Meu Perfil</h3>
+                <p><strong>Nome:</strong> <span id="userNome">Carregando...</span></p>
+                <p><strong>E-mail:</strong> <span id="userEmail">Carregando...</span></p>
+                <p><strong>Tipo:</strong> <span id="userTipo">Carregando...</span></p>
+                <button class="btn" style="margin-top: 10px;">Editar Perfil</button>
+            </div>
+
+            <!-- Para Jovens: Minhas Candidaturas -->
+            <div id="areaJovem">
+                <h3>Minhas Candidaturas</h3>
+                <div id="listaCandidaturas">
+                    <div class="candidatura-item">
+                        <p><strong>Estágio em Desenvolvimento Web</strong></p>
+                        <p>Status: <span style="color: orange;">Pendente</span></p>
+                        <p>Data: 10/12/2024</p>
+                    </div>
+                    
+                    <div class="candidatura-item">
+                        <p><strong>Curso de Programação Básica</strong></p>
+                        <p>Status: <span style="color: green;">Aceita</span></p>
+                        <p>Data: 05/12/2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Para Empresas: Minhas Oportunidades -->
+            <div id="areaEmpresa" style="display: none;">
+                <h3>Minhas Oportunidades Publicadas</h3>
+                <button class="btn" onclick="novaOportunidade()" style="margin-bottom: 15px;">Nova Oportunidade</button>
+                
+                <div id="listaOportunidadesEmpresa">
+                    <div class="oportunidade-item">
+                        <h4>Estágio em Marketing Digital</h4>
+                        <p><strong>Candidaturas:</strong> 5</p>
+                        <p><strong>Status:</strong> Ativa</p>
+                        <button class="btn">Ver Candidatos</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recomendações -->
+            <div style="margin-top: 30px;">
+                <h3>Oportunidades Recomendadas</h3>
+                <div id="listaRecomendacoes">
+                    <div class="oportunidade-item">
+                        <h4>Mentoria em Carreira Tech</h4>
+                        <p><strong>Empresa:</strong> Career Growth</p>
+                        <p><strong>Tipo:</strong> Mentoria</p>
+                        <button class="btn" onclick="verDetalhes(1)">Ver Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Quando a página carrega
+        document.addEventListener('DOMContentLoaded', function() {
+            carregarUsuario();
+        });
+
+        // Carrega informações do usuário
+        function carregarUsuario() {
+            // Tenta pegar do localStorage (simulação)
+            const usuarioSalvo = localStorage.getItem('usuario');
+            
+            if (usuarioSalvo) {
+                const usuario = JSON.parse(usuarioSalvo);
+                document.getElementById('userNome').textContent = usuario.nome || 'João Silva';
+                document.getElementById('userEmail').textContent = usuario.email || 'joao@email.com';
+                document.getElementById('userTipo').textContent = usuario.tipo || 'Jovem';
+                
+                // Mostra a área correta
+                if (usuario.tipo === 'empresa') {
+                    document.getElementById('areaJovem').style.display = 'none';
+                    document.getElementById('areaEmpresa').style.display = 'block';
+                }
+            }
+        }
+
+        // Faz logout
+        function fazerLogout() {
+            if (confirm('Deseja realmente sair?')) {
+                localStorage.removeItem('token');
+                localStorage.removeItem('usuario');
+                window.location.href = 'index.html';
+            }
+        }
+
+        function novaOportunidade() {
+            alert('Indo para página de nova oportunidade...');
+            window.location.href = 'nova-oportunidade.html';
+        }
+
+        function verDetalhes(id) {
+            alert('Vendo detalhes da oportunidade ' + id);
+            window.location.href = 'oportunidades.html';
+        }
+    </script>
+</body>
+</html>
