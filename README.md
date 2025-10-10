@@ -1,4 +1,4 @@
-# Plataforma-de-Cadastro-de-Oportunidades-para-Jovens-em-Situa-o-de-Vulnerabilidade
+# Plataforma-de-Cadastro-de-Oportunidades-para-Jovens-em-Situação-de-Vulnerabilidade
 
 A Plataforma de Cadastro de Oportunidades para Jovens promove inovação social ao conectar jovens vulneráveis a oportunidades (empregos, estágios, cursos).
 
