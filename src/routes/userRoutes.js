@@ -5,6 +5,9 @@ const userController = require('../controllers/userController');
 // Criar usuário
 router.post('/register', userController.registerUser);
 
+// Login do usuário
+router.post('/login', userController.loginUser);
+
 // Buscar usuário por ID
 router.get('/:id', userController.getUserById);
 

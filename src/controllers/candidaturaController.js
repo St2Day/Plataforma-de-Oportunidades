@@ -1,4 +1,4 @@
-const Candidatura = require('../models/Candidatura');
+const Candidatura = require('../models/candidatura');
 
 exports.createCandidatura = async (req, res) => {
   const { id_jovem, id_oportunidade, status } = req.body;

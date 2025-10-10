@@ -1,4 +1,4 @@
-const Jovem = require('../models/Jovem');
+const Jovem = require('../models/jovem');
 
 exports.createJovem = async (req, res) => {
   const { id_usuario, idade, escolaridade, area_interesse } = req.body;

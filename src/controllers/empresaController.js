@@ -1,4 +1,4 @@
-const Empresa = require('../models/Empresa');
+const Empresa = require('../models/empresa');
 
 exports.createEmpresa = async (req, res) => {
   const { id_usuario, cnpj, nome_empresa, setor } = req.body;

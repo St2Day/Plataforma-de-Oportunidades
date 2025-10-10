@@ -1,29 +1,31 @@
-require('dotenv').config();
+// server.js
 const express = require('express');
+
+const db = require("./db");
+const cors = require('cors');
+require('dotenv').config();
+
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-
+// Middlewares
+app.use(cors());
 app.use(express.json());
 
-const userRoutes = require('./src/routes/userRoutes');
-const jovemRoutes = require('./src/routes/jovemRoutes');
-const empresaRoutes = require('./src/routes/empresaRoutes');
-const oportunidadeRoutes = require('./src/routes/oportunidadeRoutes');
-const candidaturaRoutes = require('./src/routes/candidaturaRoutes');
+// Configuração do banco
 
-app.use('/api/users', userRoutes);
-app.use('/api/jovens', jovemRoutes);
-app.use('/api/empresas', empresaRoutes);
-app.use('/api/oportunidades', oportunidadeRoutes);
-app.use('/api/candidaturas', candidaturaRoutes);
-
-
+// 🔹 Rota de teste
 app.get('/', (req, res) => {
-  res.send('Bem-vindo à Plataforma de Oportunidades!');
+  res.send('Servidor e banco de dados funcionando!');
 });
 
-// Iniciar servidor
+// 🔹 Importa as rotas de usuário (depois do app e antes do listen)
+const userRoutes = require('./src/routes/userRoutes');
+app.use('/api/users', userRoutes);
+
+// 🔹 Inicia servidor
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
+
+module.exports = { app };

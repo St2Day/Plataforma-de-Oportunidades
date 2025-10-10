@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require('../models/user');
 
 // Registrar usuário
 exports.registerUser = async (req, res) => {
@@ -9,6 +9,38 @@ exports.registerUser = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Erro ao registrar usuário.' });
+  }
+};
+// Login de usuário
+exports.loginUser = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.findByEmail(email);
+
+    if (!user) {
+      return res.status(404).json({ message: 'Usuário não encontrado.' });
+    }
+
+    const bcrypt = require('bcryptjs');
+    const passwordMatch = await bcrypt.compare(password, user.senha_hash);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ message: 'Senha incorreta.' });
+    }
+
+    res.json({
+      message: 'Login realizado com sucesso!',
+      user: {
+        id: user.id_usuario,
+        nome: user.nome,
+        email: user.email,
+        tipo: user.tipo
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Erro ao realizar login.' });
   }
 };
 

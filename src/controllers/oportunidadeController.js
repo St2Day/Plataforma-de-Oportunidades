@@ -1,4 +1,4 @@
-const Oportunidade = require('../models/Oportunidade');
+const Oportunidade = require('../models/oportunidade');
 
 exports.createOportunidade = async (req, res) => {
   const { id_empresa, titulo, descricao, tipo, localizacao, data_publicacao, data_limite } = req.body;
