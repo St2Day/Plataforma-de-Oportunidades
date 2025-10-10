@@ -7,9 +7,8 @@ Projeto extensionista da UNIG para o Tema Integrador IV
 
 # Tecnologias
 - HTML5
-- CSS3 (Variáveis CSS, Grid, Flexbox)
-- JavaScript (DOM Manipulation)
-- Design Responsivo
+- CSS3 
+- JavaScript 
 
 # Funcionalidades
 - [x] Sistema de autenticação (Login/Cadastro)
