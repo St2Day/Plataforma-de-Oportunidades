@@ -2,6 +2,22 @@
 
 A Plataforma de Cadastro de Oportunidades para Jovens promove inovação social ao conectar jovens vulneráveis a oportunidades (empregos, estágios, cursos e mentorias).
 
+# Sobre o Projeto
+Projeto extensionista da UNIG para o Tema Integrador IV - Projeto de Sistemas.
+
+# Tecnologias
+- HTML5
+- CSS3 (Variáveis CSS, Grid, Flexbox)
+- JavaScript (DOM Manipulation)
+- Design Responsivo
+
+# Funcionalidades
+- [x] Sistema de autenticação (Login/Cadastro)
+- [x] Tema claro/escuro
+- [x] Design responsivo
+- [x] Validação de formulários
+- [x] Diferenciação entre Candidato e Empresa
+
 ## Documentação - Plataforma de Oportunidades
 
 Arquivos:
@@ -12,3 +28,8 @@ Arquivos:
 - models_sql.md
 - descricao_ods9.md
 - evidencias.md
+
+# Integrantes do Grupo
+- Daymara Abreu
+- Gabriel Mourão
+- Maria Eduarda Delfino
