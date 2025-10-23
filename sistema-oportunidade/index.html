@@ -3,34 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Oportunidades</title>
+    <title>Oportunidade Jovem</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div class="header-content">
-            <h1>Sistema de Oportunidades</h1>
-            <div class="buttons">
-                <a href="login.html" class="btn">Entrar</a>
-                <a href="cadastro.html" class="btn">Cadastrar</a>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-briefcase" style="font-size: 2rem; color: var(--primary-color);"></i>
+                <h1>Oportunidade Jovem</h1>
             </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">Início</a></li>
+                    <li><a href="#oportunidades">Oportunidades</a></li>
+                    <li><a href="login.html" class="btn btn-outline">Entrar</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
     </header>
 
-    <main>
-        <section class="intro">
-            <h2>Encontre oportunidades para jovens</h2>
-            <p>Cursos, estágios, empregos e mentorias</p>
-            
-            <div class="user-type">
-                <a href="cadastro.html?tipo=jovem" class="btn large">Sou Jovem</a>
-                <a href="cadastro.html?tipo=empresa" class="btn large">Sou Empresa</a>
+    <section class="hero">
+        <div class="container">
+            <h2 class="slide-up">Conectando jovens com oportunidades</h2>
+            <p class="slide-up">Encontre estágios, empregos e cursos para começar sua carreira profissional.</p>
+            <div class="hero-buttons">
+                <a href="cadastro.html" class="btn">Cadastrar</a>
+                <a href="login.html" class="btn btn-secondary">Entrar</a>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <section class="container" style="padding: 60px 0;">
+        <h2 style="text-align: center; margin-bottom: 40px; color: var(--primary-color);">Como Funciona</h2>
+        <div class="steps-container">
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h3 class="card-title">Cadastre-se</h3>
+                <p class="card-text">Crie seu perfil como candidato ou empresa</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3 class="card-title">Encontre</h3>
+                <p class="card-text">Busque oportunidades que combinam com você</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-paper-plane"></i>
+                </div>
+                <h3 class="card-title">Candidate-se</h3>
+                <p class="card-text">Envie sua candidatura para as vagas</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3 class="card-title">Trabalhe</h3>
+                <p class="card-text">Comece sua carreira profissional</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="oportunidades" class="container" style="padding: 60px 0;">
+        <h2 style="text-align: center; margin-bottom: 40px; color: var(--primary-color);">Oportunidades Disponíveis</h2>
+        <div class="categories-container">
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3 class="card-title">Estágios</h3>
+                <p class="card-text">Para estudantes que buscam experiência</p>
+                <a href="login.html" class="btn btn-outline">Ver Estágios</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3 class="card-title">Empregos</h3>
+                <p class="card-text">Vagas de trabalho para jovens</p>
+                <a href="login.html" class="btn btn-outline">Ver Empregos</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="card-title">Cursos</h3>
+                <p class="card-text">Capacitações gratuitas</p>
+                <a href="login.html" class="btn btn-outline">Ver Cursos</a>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p>Projeto Extensionista - Faculdade</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Oportunidade Jovem</h3>
+                    <p>Conectando jovens com oportunidades reais</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="#oportunidades">Oportunidades</a></li>
+                        <li><a href="cadastro.html">Cadastrar</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contato@opjovem.com</li>
+                        <li><i class="fas fa-phone"></i> (21) 95933-6293</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Oportunidade Jovem</p>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = toggle.querySelector('i');
+        
+        toggle.addEventListener('click', function() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            icon.className = 'fas fa-sun';
+        }
+    </script>
 </body>
 </html>
