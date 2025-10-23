@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'https://plataforma-oportunidades-backend.onrender.com/api';
 
 // Função para fazer login
 async function fazerLogin(email, senha) {
@@ -109,5 +109,6 @@ function fazerLogout() {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
     window.location.href = 'index.html';
+
 
 }
