@@ -1,12 +1,9 @@
-// script.js - Conectando com backend Java (Spring Boot)
-
-// Java geralmente roda na porta 8080
-const API_URL = 'http://localhost:8080/api';
+const API_URL = 'http://localhost:3000/api';
 
 // Função para fazer login
 async function fazerLogin(email, senha) {
     try {
-        const response = await fetch(`${API_URL}/auth/login`, {
+        const response = await fetch(`${API_URL}/users/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -34,7 +31,7 @@ async function fazerLogin(email, senha) {
 // Função para cadastrar usuário
 async function cadastrarUsuario(usuarioData) {
     try {
-        const response = await fetch(`${API_URL}/usuarios`, {
+        const response = await fetch(`${API_URL}/users/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -99,10 +96,8 @@ async function candidatarOportunidade(idOportunidade) {
     }
 }
 
-// Verifica se o usuário está logado
 function verificarLogin() {
     const token = localStorage.getItem('token');
-    // CORREÇÃO: !token (se NÃO tem token) e NÃO está nas páginas públicas
     if (!token && !window.location.href.includes('index.html') && 
         !window.location.href.includes('login.html') && 
         !window.location.href.includes('cadastro.html')) {
@@ -110,7 +105,6 @@ function verificarLogin() {
     }
 }
 
-// Faz logout
 function fazerLogout() {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
