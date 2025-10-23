@@ -3,55 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Sistema de Oportunidades</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Login - Oportunidade Jovem</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
-        <div class="header-content">
-            <h1>Sistema de Oportunidades</h1>
-            <a href="index.html" class="btn">Voltar</a>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-briefcase" style="font-size: 2rem; color: var(--primary-color);"></i>
+                <h1>Oportunidade Jovem</h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#oportunidades">Oportunidades</a></li>
+                    <li><a href="login.html" class="btn btn-outline active">Entrar</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
     </header>
 
-    <main>
-        <div class="form-container">
-            <h2>Login</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="email">E-mail:</label>
-                    <input type="email" id="email" required>
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-card card">
+                    <h2 class="auth-title">Entrar</h2>
+                    <p class="auth-subtitle">Acesse sua conta</p>
+                    
+                    <form id="login-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Seu email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="senha" class="form-label">Senha</label>
+                            <div class="password-input">
+                                <input type="password" id="senha" class="form-control" placeholder="Sua senha" required>
+                                <button type="button" class="password-toggle">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input type="checkbox" id="lembrar" class="form-check-input">
+                            <label for="lembrar" class="form-check-label">Lembrar de mim</label>
+                            <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block">Entrar</button>
+                        </div>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
+                    </div>
                 </div>
                 
-                <div class="form-group">
-                    <label for="senha">Senha:</label>
-                    <input type="password" id="senha" required>
+                <div class="card">
+                    <h3 class="card-title">Faça parte da nossa rede</h3>
+                    <p class="card-text">Junte-se a milhares de jovens e empresas conectadas através de oportunidades.</p>
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
                 </div>
-                
-                <button type="submit" class="btn" style="width: 100%;">Entrar</button>
-            </form>
-            
-            <p style="text-align: center; margin-top: 20px;">
-                Não tem conta? <a href="cadastro.html">Cadastre-se</a>
-            </p>
+            </div>
         </div>
-    </main>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Oportunidade Jovem</h3>
+                    <p>Conectando jovens com oportunidades reais</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="index.html#oportunidades">Oportunidades</a></li>
+                        <li><a href="cadastro.html">Cadastrar</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contato@opjovem.com</li>
+                        <li><i class="fas fa-phone"></i> (21) 95933-6293</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Oportunidade Jovem</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Faz o login funcionar
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+        const toggle = document.getElementById('theme-toggle');
+        const icon = toggle.querySelector('i');
+        
+        toggle.addEventListener('click', function() {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
             
-            const email = document.getElementById('email').value;
-            const senha = document.getElementById('senha').value;
-            
-            // Teste simples - depois conecta com a API
-            if (email && senha) {
-                alert('Login realizado! Indo para sua área...');
-                window.location.href = 'dashboard.html';
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
             } else {
-                alert('Preencha todos os campos!');
+                document.documentElement.setAttribute('data-theme', 'dark');
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
             }
+        });
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            icon.className = 'fas fa-sun';
+        }
+
+        document.querySelector(".password-toggle").addEventListener("click", function() {
+            const passwordInput = document.getElementById("senha");
+            const icon = this.querySelector("i");
+            
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        });
+
+        document.getElementById("login-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            alert("Login realizado com sucesso! Em uma aplicação real, isso se conectaria ao backend.");
         });
     </script>
 </body>
