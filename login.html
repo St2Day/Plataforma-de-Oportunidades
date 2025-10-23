@@ -151,10 +151,18 @@
             }
         });
 
-        document.getElementById("login-form").addEventListener("submit", function(e) {
-            e.preventDefault();
-            alert("Login realizado com sucesso! Em uma aplicação real, isso se conectaria ao backend.");
-        });
+       document.getElementById("login-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("password").value.trim();
+    // chama a função de login do script.js
+    try {
+        await fazerLogin(email, senha);
+    } catch (err) {
+        console.error(err);
+        alert("Erro ao fazer login. Verifique o console para detalhes.");
+    }
+});
     </script>
 </body>
 </html>

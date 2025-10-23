@@ -1,23 +1,20 @@
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'https://plataforma-oportunidades-backend.onrender.com/api';
 
 // Função para fazer login
 async function fazerLogin(email, senha) {
     try {
-        const response = await fetch(`${API_URL}/users/login`, {
+        const response = await fetch(`${API_URL}https://plataforma-oportunidades-backend.onrender.com/api/users/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ email, senha })
+            body: JSON.stringify({ email: email, password: senha })
         });
-        
+
         if (response.ok) {
-            const data = await response.json();
-            // Salva o token no localStorage
             localStorage.setItem('token', data.token);
             localStorage.setItem('usuario', JSON.stringify(data.usuario));
-            
-            // Redireciona para a dashboard
+
             window.location.href = 'dashboard.html';
         } else {
             alert('E-mail ou senha incorretos!');
@@ -38,7 +35,7 @@ async function cadastrarUsuario(usuarioData) {
             },
             body: JSON.stringify(usuarioData)
         });
-        
+
         if (response.ok) {
             alert('Cadastro realizado com sucesso!');
             window.location.href = 'login.html';
@@ -56,7 +53,7 @@ async function buscarOportunidades(filtros = {}) {
     try {
         const queryString = new URLSearchParams(filtros).toString();
         const response = await fetch(`${API_URL}/oportunidades?${queryString}`);
-        
+
         if (response.ok) {
             return await response.json();
         } else {
@@ -81,7 +78,7 @@ async function candidatarOportunidade(idOportunidade) {
             },
             body: JSON.stringify({ idOportunidade: idOportunidade })
         });
-        
+
         if (response.ok) {
             alert('Candidatura enviada com sucesso!');
             return true;
@@ -96,18 +93,22 @@ async function candidatarOportunidade(idOportunidade) {
     }
 }
 
+// Verifica se o usuário está logado
 function verificarLogin() {
     const token = localStorage.getItem('token');
-    if (!token && !window.location.href.includes('index.html') && 
-        !window.location.href.includes('login.html') && 
-        !window.location.href.includes('cadastro.html')) {
+    if (
+        !token &&
+        !window.location.href.includes('index.html') &&
+        !window.location.href.includes('login.html') &&
+        !window.location.href.includes('cadastro.html')
+    ) {
         window.location.href = 'login.html';
     }
 }
 
+// Faz logout
 function fazerLogout() {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
     window.location.href = 'index.html';
-
 }
