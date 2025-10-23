@@ -99,7 +99,7 @@ async function candidatarOportunidade(idOportunidade) {
     }
 }
 
-// Verifica se o usuário está logado - CORREÇÃO IMPORTANTE
+// Verifica se o usuário está logado
 function verificarLogin() {
     const token = localStorage.getItem('token');
     // CORREÇÃO: !token (se NÃO tem token) e NÃO está nas páginas públicas
@@ -115,4 +115,5 @@ function fazerLogout() {
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
     window.location.href = 'index.html';
+
 }
